@@ -49,6 +49,7 @@ class SSH:
         if self.p.wait() != None:
           print "Process terminated."
           # In case of auto-logout on timeout, set connect to False so that it re-connects
+          self.attempt = False
           connect = False
           break
       if out != '':
@@ -76,6 +77,8 @@ sudo_username = os.getenv("SUDO_USER")
 print "Script Initialized. Trying to establish SSH connection."
 
 ssh = SSH(port, username, host, sudo_username)
+
+p = False
 
 pid = os.fork()
 if pid == 0:

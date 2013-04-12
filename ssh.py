@@ -34,7 +34,7 @@ class SSH:
   def disconnect(self):
     print "Disconnecting."
     self.attempt = False
-    #self.p.kill()
+    self.p.kill()
 
   def establish(self):
     if self.isOpen('127.0.0.1',self.port):

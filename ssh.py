@@ -48,6 +48,8 @@ class SSH:
       if out == '':
         if self.p.wait() != None:
           print "Process terminated."
+          # In case of auto-logout on timeout, set connect to False so that it re-connects
+          connect = False
           break
       if out != '':
         print out
